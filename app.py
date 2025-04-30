@@ -4,7 +4,6 @@ import pandas as pd
 import io
 from predict_local import preprocess_raw_data, predict_all
 
-
 def main():
     # Title
     st.title("Food-Item Classifier")
@@ -56,14 +55,12 @@ def main():
     input_df.to_csv(csv_buffer, index=False)
     csv_buffer.seek(0)
 
-    # Preprocess and predict
-    X_raw, _ = preprocess_raw_data(csv_buffer)
-    prediction = predict_all(X_raw)
+    # Directly call predict_all on raw CSV buffer
+    prediction = predict_all(csv_buffer)
 
     # Display result
     st.markdown("## 🥡 Predicted food item:")
     st.success(prediction[0])
-
 
 if __name__ == "__main__":
     main()
