@@ -149,12 +149,9 @@ def process_and_clean_dataset(df):
 # 2. PREPROCESSING FUNCTIONS
 ##############################################
 
-def preprocess_raw_data(data, q=5):
+def preprocess_raw_data(file_path, q=5):
     
-        if isinstance(data, pd.DataFrame):
-        df = data.copy()
-    else:
-        df = pd.read_csv(data, keep_default_na=False)
+    df = pd.read_csv(file_path, keep_default_na=False)
 
     # Apply cleaning functions (rename columns, parse numbers, standardize movies and drinks)
     df = process_and_clean_dataset(df)
